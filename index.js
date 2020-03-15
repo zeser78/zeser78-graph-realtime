@@ -31,9 +31,8 @@ fetch(urlAPI + "%5EVIX, UVXY")
     console.log("something went wrong with fetch");
     console.log(err);
   });
-// }, 5000);
 
-//fetching UVXY
+// Google Charts
 
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
@@ -61,34 +60,30 @@ function drawChart() {
           let uvxy;
           let text = document.getElementById("messageTest");
           text.innerHTML = vixPrice;
-          // console.log(message);
+
           const { Symbol, Expiration, Last, Settlement } = obj;
           symbolStock.push(Symbol);
           expiration.push(Expiration);
           lastPrice.push(Last);
           settlement.push(Settlement);
-          setInterval(function() {
-            messageNo = Math.random();
-            return messageNo;
-          }, 1000);
-          // console.log(messageNo);
+
           data.addRows([
             [Expiration, Last, Settlement, vixData.price, uvxyData.price]
             //
           ]);
 
-          var view = new google.visualization.DataView(data);
-          view.setColumns([
-            0,
-            1,
-            {
-              calc: "stringify",
-              sourceColumn: 1,
-              type: "string",
-              role: "annotation"
-            },
-            2
-          ]);
+          // var view = new google.visualization.DataView(data);
+          // view.setColumns([
+          //   0,
+          //   1,
+          //   {
+          //     calc: "stringify",
+          //     sourceColumn: 1,
+          //     type: "string",
+          //     role: "annotation"
+          //   },
+          //   2
+          // ]);
           var chart = new google.visualization.LineChart(
             document.getElementById("curve_chart")
           );
@@ -97,9 +92,9 @@ function drawChart() {
             title: "VIX Performance",
             curveType: "line",
             legend: { position: "right" },
-            displayAnnotations: false
+            displayAnnotations: true
           };
-          chart.draw(view, options);
+          chart.draw(data, options);
         }
       });
     });
@@ -107,8 +102,3 @@ function drawChart() {
 }
 
 let text = document.getElementById("messageTest");
-// text.innerHTML = message;
-// console.log(message);
-// setInterval(function(){
-
-// },3000)
