@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <!-- <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"
+    ></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+  </head>
+  <body>
+    <p id="messageTest">first</p>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    <div style="position: relative; height:40vh; width:80vw">
+      <canvas id="chart-1"></canvas>
+      <button onclick="updateChart()">Update</button>
+    </div>
+
+    <script src="./index.js"></script>
+    <script src="./index-chartjs.js"></script>
+  </body>
+</html>
